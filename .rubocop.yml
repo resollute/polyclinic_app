@@ -19,3 +19,24 @@ Style/StringLiterals:
   - single_quotes
   - double_quotes
   ConsistentQuotesInMultiline: false
+
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+  VersionAdded: '0.9'
+  AllowedConstants: []
+  Exclude:
+  - "/home/resollute/RubymineProjects/polyclinic_app/spec/**/*"
+  - "/home/resollute/RubymineProjects/polyclinic_app/test/**/*"
+
+Rails/FilePath:
+  Description: Use `Rails.root.join` for file path joining.
+  Enabled: false
+  VersionAdded: '0.47'
+  VersionChanged: '2.4'
+  EnforcedStyle: slashes
+  SupportedStyles:
+  - slashes
+  - arguments
+
+
