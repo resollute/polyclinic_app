@@ -1,0 +1,10 @@
+<h2 style="color: #B00100; margin: 0 auto"> <%= @category.title %> </h2> <br/>
+<%= @category.inspect %>
+<% byebug %>
+<% @category.users.each do |user|  %>
+    <ul>
+      <li> <%= user.phone %> </li>
+      <li> <%= link_to user.fullname, category_product_path(@category, product) %> </li>
+
+    </ul>
+<% end %>

@@ -31,3 +31,13 @@
 
 en:
   hello: "Hello world"
+
+activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "Name should be exist."
+            surname:
+              blank: "Surname should be exist."

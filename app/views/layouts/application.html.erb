@@ -16,10 +16,14 @@
     <%= render 'home/header' %>
     <%# <div class="container"> %>
       <%# <div class="row"> %>
-        <div class="m-2">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-        </div>
+        <%# <div class="m-2"> %>
+
+          <% flash.each do |type, msg| %>
+            <div class="alert alert-info m-4">
+              <%= msg %>
+            </div>
+          <% end %>
+        <%# </div> %>
         <div class="m-4">          
           <%= yield %>
         </div>

@@ -1,2 +1,14 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Polyclinic App</title>
+</head>
+<body>
+
+  <h1 style="color: #B00100; margin: 0 auto">Polyclinic app</h1> <br/>
+  <p>With this application, people can make an appointment with a doctor. Doctors consult with patients </p>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-primary'  %>
+</body>
+</html>
+
+
