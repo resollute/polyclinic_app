@@ -5,14 +5,16 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :categories do
+    get 'add_doctor'
+    post 'update_category_doctors', only: [:update_category_doctors]
     resources :users do
       # post "/expenses", to: "users#share_data"
       # post '/share_data', to: 'users_controller#share_data', as: 'share_data'
     end
   end
-
+  
   resources :users, only: %i[] do
-    get :profile
+    get :profile 
   end
 
 end

@@ -1,4 +1,4 @@
-<h1 style="color: #B00100; margin: 0 auto"> <%=@user.name %> Profile </h1> <br/>
+<h1 style="color: #B00100; margin: 0 auto"> <%=@user.name %>'s Profile </h1> <br/>
 <div class="jumbotron">
   <br/>
   <h3 class="display-8">
@@ -8,5 +8,9 @@
       <td>Email: <%= @user.phone %></td>
       <td><%= link_to 'Edit', edit_user_registration_path %></td>
     </pre>
+  </h3>
+
+  <h3 class="display-8">
+    
   </h3>
 </div>

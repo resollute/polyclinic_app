@@ -1,6 +1,24 @@
 class CategoriesController < ApplicationController
-  # load_and_authorize_resource
+  # load_and_authorize_resource :category
+  load_and_authorize_resource :category, through: :user, shallow: :true
+  before_action :authenticate_user!
+
   before_action :set_category, only: %i[show edit update destroy]
+
+
+  def update_category_doctors
+    @category = Category.find(params[:category_id])
+    byebug
+    category_doctors_params = params[:category][:category_doctors].to_i
+    if @category.category_doctors.include?(category_doctors_params)
+      redirect_to categories_path, alert: "This doctor has already been added"
+    else
+      byebug
+      @category.category_doctors.push(category_doctors_params)
+      @category.save!
+      redirect_to categories_path, notice: "Field updated"    
+    end   
+  end
 
   def new
     page_not_found unless current_user
@@ -8,7 +26,6 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    byebug
     Category.create!(category_params)
     redirect_to categories_path
   end
@@ -20,10 +37,11 @@ class CategoriesController < ApplicationController
   def edit; end
 
   def show
-    
+
   end
 
   def update
+    byebug
     @category.update!(category_params)
     redirect_to categories_path
   end
@@ -40,6 +58,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :category_doctors, :id, :fullname)
   end
 end

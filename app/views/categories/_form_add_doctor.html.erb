@@ -1,0 +1,12 @@
+<%= form_for :category, url:category_update_category_doctors_path, method: :post do |form| %>
+  <div class="field", class: "form-control">
+    <%= form.label :title, class: "form-control" %>
+    <%= form.collection_select :category_doctors, User.where(doctor: true), :id, :fullname, {prompt: false}, autofocus:true, class: "form-control", id: "user" %>
+    <%#= form.select :user_id, options_for_select(User.all.collect {|x| [x.fullname, x.id] if x.doctor=true}.compact), prompt: "Please select", autofocus:true, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "form-control"%>
+  </div>
+
+<% end %>

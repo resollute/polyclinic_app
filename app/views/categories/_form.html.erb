@@ -1,10 +1,8 @@
 <%= form_with model: @category do |form| %>
 
-  <div class="field", class: "form-control">
-    <%= form.label :title, class: "form-control" %>
-    <%= form.text_field :title, class: "form-control" %>
-    <%= form.collection_select :user_id, User.where(doctor: true), :id, :fullname, {prompt: "Select"}, autofocus:true, class: "form-control", id: "user" %>
-    <%#= form.select :user_id, options_for_select(User.all.collect {|x| [x.fullname, x.id] if x.doctor=true}.compact), prompt: "Please select", autofocus:true, class: "form-control" %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="actions">

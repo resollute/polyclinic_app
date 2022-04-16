@@ -9,15 +9,15 @@ class Ability
     return if user.patient?
 
     doctor_abilities(user.id)
-    return unless user.doctor?
+    return if user.doctor?
 
     admin_abilities
-    return unless user.admin?
+    return if user.admin?
   end
 
   private
   def guest_abilities
-    can :read, [Category]
+    can :read, [Category, User]
   end
 
   def patient_abilities(user_id)
@@ -25,11 +25,11 @@ class Ability
   end
 
   def doctor_abilities(user_id)
-    can :read, [Category]
+    guest_abilities
     # can %i[read create update destroy], Comment, user_id: user_id
   end
 
   def admin_abilities
-    can :manage, :all
+    can %i[read create update destroy], Category
   end
 end
