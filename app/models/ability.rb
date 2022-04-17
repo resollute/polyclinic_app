@@ -31,5 +31,6 @@ class Ability
 
   def admin_abilities
     can %i[read create update destroy], Category
+    can :manage, :all
   end
 end

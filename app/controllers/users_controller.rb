@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # load_and_authorize_resource :category
-  load_and_authorize_resource :category, through: :user
+  load_and_authorize_resource
   before_action :authenticate_user!
 
   # def cart
