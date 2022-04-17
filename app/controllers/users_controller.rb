@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # load_and_authorize_resource :category
   load_and_authorize_resource
   before_action :authenticate_user!
 
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @doctors_users = User.where({id: Category.pluck(:category_doctors)[0]})
+    @doctors_users = User.where({id: @category.category_doctors})
   end
 
   def profile

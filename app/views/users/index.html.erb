@@ -1,12 +1,9 @@
 <h2 style="color: #B00100; margin: 0 auto"> <%= @category.title %> </h2> <br/>
 <%= current_user.inspect %>
+<br>
 <%= @category.inspect %>
 <% if current_user.admin? %>
-  <h2><td> <%= link_to "Add doctor", category_add_doctor_path(@category.id), :class => "btn btn-secondary" %>
-<% end %>
-<% if current_user.patient? %>
-  <%= link_to "Make an appointment", category_add_doctor_path(@category.id), :class => "btn btn-secondary" %>
-  <%= render 'form_doctors_list' %>
+  <h2><td> <%= link_to "Add doctor", category_add_doctor_path(@category.id), :class => "btn btn-secondary" %> </td></h2>
 <% end %>
 
 <%= render 'form_doctors_list' %>

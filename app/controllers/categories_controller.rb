@@ -7,12 +7,10 @@ class CategoriesController < ApplicationController
 
   def update_category_doctors
     @category = Category.find(params[:category_id])
-    byebug
     category_doctors_params = params[:category][:category_doctors].to_i
     if @category.category_doctors.include?(category_doctors_params)
       redirect_to categories_path, alert: "This doctor has already been added"
     else
-      byebug
       @category.category_doctors.push(category_doctors_params)
       @category.save!
       redirect_to categories_path, notice: "Field updated"    
@@ -40,7 +38,6 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    byebug
     @category.update!(category_params)
     redirect_to categories_path
   end
