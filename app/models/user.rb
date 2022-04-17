@@ -12,6 +12,8 @@ class User < ApplicationRecord
                                       numericality: true,
                                       format: { with: /^\+?3?8?(0(67|68|96|97|98)\d{7})$/, multiline: true }
   validates :name, :surname, presence: true
+  
+  paginates_per 1
   # belongs_to :category
   def email_required?
     false

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @doctors_users = User.where({id: @category.category_doctors})
+    @doctors_users = User.where({id: @category.category_doctors}).page params[:page]
   end
 
   def profile
