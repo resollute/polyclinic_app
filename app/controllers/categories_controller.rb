@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all.limit(10).order(:title)
+    @categories = Category.all.limit(10).order(:title).page params[:page]
   end
 
   def edit; end

@@ -15,15 +15,15 @@
     <h2><td> <%#= link_to "New category", new_category_path, :class => "btn btn-secondary" %> </td></h2>
   
     <% @categories.each do |category| %>
-      
+
         <h2><td> <%= link_to category.title , category_users_path(category) %> </td></h2>
-        <% if can? :create, category %>
+        <% if can? :create, Category %>
         <h2><td> <%= link_to "New category", new_category_path(category), :class => "btn btn-secondary" %>
           <%= link_to "Update category", edit_category_path(category), :class => "btn btn-secondary" %>
           <%= link_to "Delete category", category , method: :delete, :class => "btn btn-secondary" %></td></h2>
-      
+        <% end %>
     <% end %>
-  <% end %>
+    <%= paginate @categories %>
 
 </body>
 </html>
