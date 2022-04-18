@@ -22,10 +22,11 @@ class Ability
 
   def patient_abilities(user_id)
     guest_abilities
+    can :profile, User
   end
 
   def doctor_abilities(user_id)
-    guest_abilities
+    patient_abilities(user_id)
     # can %i[read create update destroy], Comment, user_id: user_id
   end
 
