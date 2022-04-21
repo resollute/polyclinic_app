@@ -16,6 +16,13 @@ class UsersController < ApplicationController
   end
 
   def make_appointment
+    @category = Category.find(params[:category_id])
+    @doctor_user = User.find(params[:user_id])
+    byebug
+    # redirect_to category_users_path
+  end
 
+  def approve_appointment
+    
   end
 end

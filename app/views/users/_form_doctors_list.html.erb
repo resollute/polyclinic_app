@@ -2,7 +2,7 @@
   <ul>
     <h5><td> <%= doc.inspect %> </td></h5>
     <% if current_user.patient? %>
-      <h2><td><%= link_to "Make an appointment", category_add_doctor_path(@category.id), :class => "btn btn-secondary" %> </td></h2>
+      <h2><td><%= link_to "Make an appointment", category_user_make_appointment_path(@category.id, doc.id), :class => "btn btn-secondary" %> </td></h2>
     <% end %>
   </ul>
 <% end %>

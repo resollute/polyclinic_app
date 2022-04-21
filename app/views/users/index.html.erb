@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <h2 style="color: #B00100; margin: 0 auto"> <%= @category.title %> </h2> <br/>
 <%= current_user.inspect %>
 <br>
@@ -6,5 +9,17 @@
   <h2><td> <%= link_to "Add doctor", category_add_doctor_path(@category.id), :class => "btn btn-secondary" %> </td></h2>
 <% end %>
 
-<%= render 'form_doctors_list' %>
+<%# <%= render 'form_doctors_list' %> %>
+<% @doctors_users.each do |doc| %>
+  <ul>
+    <h5><td> <%= doc.inspect %> </td></h5>
+    <% if current_user.patient? %>
+      <h2><td><%= link_to "Make an appointment", category_user_make_appointment_path(@category.id, doc.id), :class => "btn btn-secondary", remote: true %> </td></h2>
+    <% end %>
+  </ul>
+<% end %>
 <%= paginate @doctors_users %>
+
+
+</body>
+</html>
