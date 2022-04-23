@@ -22,7 +22,7 @@ class Ability
 
   def patient_abilities(user_id)
     guest_abilities
-    can :profile, :make_appointment, User
+    can %i[profile request_appointment], User
   end
 
   def doctor_abilities(user_id)

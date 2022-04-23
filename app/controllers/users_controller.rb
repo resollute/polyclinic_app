@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @doctors_users = User.where({id: @category.category_doctors}).page params[:page]
+    @doctors_users = User.where({id: @category.category_doctors}).order(:created_at).page params[:page]
   end
 
   def edit; end
@@ -15,14 +15,22 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def make_appointment
+  def request_appointment
     @category = Category.find(params[:category_id])
-    @doctor_user = User.find(params[:user_id])
-    byebug
-    # redirect_to category_users_path
+    # 
+    @chosen_doctor = User.find(params[:user_id])
+    
+    if @chosen_doctor.patients_appointments.include?(current_user.id)
+      redirect_to category_users_path(@category), alert: "Request to see a doctor already exists"
+    else
+      @chosen_doctor.patients_appointments.push(current_user.id)
+      @chosen_doctor.save!
+      redirect_to category_users_path(@category), alert: "Request for appointment"
+    end    
   end
 
   def approve_appointment
-    
+    @doctor_user = current_user
   end
+
 end
